@@ -18,6 +18,7 @@ on:
       new-version:
         description: 'The version of WordPress to update to.'
         type: 'string'
+        default: 'latest'
       php:
         description: 'The version of PHP to use, in the format of X.Y'
         required: true
@@ -51,7 +52,7 @@ jobs:
   # - Updates to the latest minor version.
   # - Updates to the version of WordPres being tested.
   upgrade-tests:
-    name: ${{ inputs.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }} / PHP ${{ inputs.php }} with ${{ 'mariadb' == inputs.db-type && 'MariaDB' || 'MySQL' }} ${{ inputs.db-version }}${{ inputs.multisite && ' multisite' || '' }}
+    name: ${{ inputs.wp }} to ${{ inputs.new-version }} / PHP ${{ inputs.php }} with ${{ 'mariadb' == inputs.db-type && 'MariaDB' || 'MySQL' }} ${{ inputs.db-version }}${{ inputs.multisite && ' multisite' || '' }}
     runs-on: ${{ inputs.os }}
     timeout-minutes: 20
 
@@ -89,6 +90,6 @@ jobs:
       - name: Update to the latest minor version
         run: wp core update --minor
 
-      - name: Upgrade to WordPress ${{ inputs.new-version && inputs.new-version || 'latest' }}
+      - name: Upgrade to WordPress ${{ inputs.new-version }}
         run: |
-          wp core update${{ inputs.new-version && ' --version=' && inputs.new-version || '' }}
+          wp core update${{ 'latest' != inputs.wp-version && format( '--version={0}', inputs.wp-version ) || '' }}

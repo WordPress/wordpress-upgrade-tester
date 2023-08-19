@@ -18,6 +18,7 @@ on:
       new-version:
         description: 'The version to test updating to.'
         type: string
+        default: 'latest'
 
 # Cancels all previous workflow runs for pull requests that have not completed.
 concurrency:

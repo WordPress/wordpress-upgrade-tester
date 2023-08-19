@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       new-version:
-        description: 'The new version'
+        description: 'The version to test installing.'
         type: string
-        default: '6.3'
+        default: 'latest'
 
 # Cancels all previous workflow runs for pull requests that have not completed.
 concurrency:
@@ -40,7 +40,7 @@ jobs:
   # - Creates a `wp-config.php` file.
   # - Installs WordPress.
   install-tests-mysql:
-    name: WP ${{ inputs.new-version || '6.3' }} / PHP ${{ matrix.php }} / ${{ 'mariadb' == matrix.db-type && 'MariaDB' || 'MySQL' }} ${{ matrix.db-version }}${{ matrix.multisite && ' multisite' || '' }}
+    name: WP ${{ inputs.new-version || 'latest' }} / PHP ${{ matrix.php }} / ${{ 'mariadb' == matrix.db-type && 'MariaDB' || 'MySQL' }} ${{ matrix.db-version }}${{ matrix.multisite && ' multisite' || '' }}
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -76,8 +76,8 @@ jobs:
         run: |
           sudo systemctl start ${{ matrix.db-type }}
 
-      - name: Download WordPress ${{ inputs.new-version || '6.3' }}
-        run: wp core download --version=${{ inputs.new-version || '6.3' }}
+      - name: Download WordPress
+        run: wp core download ${{ inputs.wp-version && 'latest' != inputs.wp-version && format( '--version={0}', inputs.wp-version ) || '' }}
 
       - name: Create wp-config.php file
         run: wp config create --dbname=test_db --dbuser=root --dbpass=root --dbhost=127.0.0.1:${{ job.services.database.ports['3306'] }}

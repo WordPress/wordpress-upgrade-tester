@@ -35,7 +35,7 @@ jobs:
   # Spawns upgrade testing for WordPress 6.x versions with MySQL.
   #
   upgrade-tests-wp-6x-mysql:
-    name: ${{ matrix.wp }} to ${{ inputs.new_version && inputs.new_version || 'latest' }}
+    name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: desrosj/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@one-workflow-all-update-testing
     if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
     permissions:
@@ -55,14 +55,14 @@ jobs:
       db-type: ${{ matrix.db-type }}
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
-      new-version: ${{ inputs.new_version && inputs.new_version || '' }}
+      new-version: ${{ inputs.new-version && inputs.new-version || '' }}
       multisite: ${{ matrix.multisite }}
 
   #
   # Spawns upgrade testing for WordPress 5.x versions on PHP 7.x with MySQL.
   #
   upgrade-tests-wp-5x-php-7x-mysql:
-    name: ${{ matrix.wp }} to ${{ inputs.new_version && inputs.new_version || 'latest' }}
+    name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: desrosj/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@one-workflow-all-update-testing
     if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
     strategy:
@@ -80,7 +80,7 @@ jobs:
       db-type: ${{ matrix.db-type }}
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
-      new-version: ${{ inputs.new_version && inputs.new_version || '' }}
+      new-version: ${{ inputs.new-version && inputs.new-version || '' }}
       multisite: ${{ matrix.multisite }}
 
   #
@@ -91,7 +91,7 @@ jobs:
   # - array/string offset with curly braces.
   #
   upgrade-tests-wp-5x-php-8x-mysql:
-    name: ${{ matrix.wp }} to ${{ inputs.new_version && inputs.new_version || 'latest' }}
+    name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: desrosj/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@one-workflow-all-update-testing
     if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
     strategy:
@@ -109,14 +109,14 @@ jobs:
       db-type: ${{ matrix.db-type }}
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
-      new-version: ${{ inputs.new_version && inputs.new_version || '' }}
+      new-version: ${{ inputs.new-version && inputs.new-version || '' }}
       multisite: ${{ matrix.multisite }}
 
   #
   # Spawns upgrade testing for WordPress 4.x versions on PHP 7.x with MySQL.
   #
   upgrade-tests-wp-4x-php-7x-mysql:
-    name: ${{ matrix.wp }} to ${{ inputs.new_version && inputs.new_version || 'latest' }}
+    name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: desrosj/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@one-workflow-all-update-testing
     if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
     strategy:
@@ -134,7 +134,7 @@ jobs:
       db-type: ${{ matrix.db-type }}
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
-      new-version: ${{ inputs.new_version && inputs.new_version || '' }}
+      new-version: ${{ inputs.new-version && inputs.new-version || '' }}
       multisite: ${{ matrix.multisite }}
 
   #
@@ -145,7 +145,7 @@ jobs:
   # - array/string offset with curly braces.
   #
   upgrade-tests-wp-4x-php-8x-mysql:
-    name: ${{ matrix.wp }} to ${{ inputs.new_version && inputs.new_version || 'latest' }}
+    name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: desrosj/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@one-workflow-all-update-testing
     if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
     strategy:
@@ -163,5 +163,5 @@ jobs:
       db-type: ${{ matrix.db-type }}
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
-      new-version: ${{ inputs.new_version && inputs.new_version || '' }}
+      new-version: ${{ inputs.new-version && inputs.new-version || '' }}
       multisite: ${{ matrix.multisite }}

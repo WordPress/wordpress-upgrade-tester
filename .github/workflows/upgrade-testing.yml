@@ -3,7 +3,7 @@ name: Upgrade Tests
 on:
   push:
     branches:
-      - one-workflow-all-update-testing
+      - trunk
     # Always test the workflow after it's updated.
     paths:
       - '.github/workflows/upgrade-testing.yml'

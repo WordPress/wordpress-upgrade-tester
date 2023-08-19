@@ -2,6 +2,8 @@ name: Installation Tests
 
 on:
   push:
+    branches:
+      - trunk
     # Always test the workflow after it's updated.
     paths:
       - '.github/workflows/install-testing.yml'

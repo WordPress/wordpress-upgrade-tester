@@ -44,16 +44,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-latest' ]
         php: [ '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
         db-type: [ 'mysql' ]
         db-version: [ '5.7', '8.0' ]
         wp: [ '6.0', '6.1', '6.2' ]
         multisite: [ false, true ]
     with:
-      os: ${{ matrix.os }}
+      os: 'ubuntu-latest'
       php: ${{ matrix.php }}
-      db-type: ${{ matrix.db-type }}
+      db-type: 'mysql'
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
@@ -69,16 +68,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-latest' ]
         php: [ '7.0', '7.1', '7.2', '7.3', '7.4' ]
         db-type: [ 'mysql' ]
         db-version: [ '5.7', '8.0' ]
         wp: [ '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9' ]
         multisite: [ false, true ]
     with:
-      os: ${{ matrix.os }}
+      os: 'ubuntu-latest'
       php: ${{ matrix.php }}
-      db-type: ${{ matrix.db-type }}
+      db-type: 'mysql'
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
@@ -98,16 +96,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-latest' ]
         php: [ '8.0', '8.1', '8.2' ]
         db-type: [ 'mysql' ]
         db-version: [ '5.7', '8.0' ]
         wp: [ '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9' ]
         multisite: [ false, true ]
     with:
-      os: ${{ matrix.os }}
+      os: 'ubuntu-latest'
       php: ${{ matrix.php }}
-      db-type: ${{ matrix.db-type }}
+      db-type: 'mysql'
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
@@ -123,16 +120,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-latest' ]
         php: [ '7.0', '7.1', '7.2', '7.3', '7.4' ]
-        db-type: [ 'mysql' ]
         db-version: [ '5.7', '8.0' ]
         wp: [ '4.1', '4.2', '4.3', '4.4', '4.5', '4.6', '4.7', '4.8', '4.9' ]
         multisite: [ false, true ]
     with:
-      os: ${{ matrix.os }}
+      os: 'ubuntu-latest'
       php: ${{ matrix.php }}
-      db-type: ${{ matrix.db-type }}
+      db-type: 'mysql'
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
@@ -152,16 +147,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'ubuntu-latest' ]
         php: [ '8.0', '8.1', '8.2' ]
         db-type: [ 'mysql' ]
         db-version: [ '5.7', '8.0' ]
         wp: [ '4.1', '4.2', '4.3', '4.4', '4.5' ]
         multisite: [ false, true ]
     with:
-      os: ${{ matrix.os }}
+      os: 'ubuntu-latest'
       php: ${{ matrix.php }}
-      db-type: ${{ matrix.db-type }}
+      db-type: 'mysql'
       db-version: ${{ matrix.db-version }}
       wp: ${{ matrix.wp }}
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}

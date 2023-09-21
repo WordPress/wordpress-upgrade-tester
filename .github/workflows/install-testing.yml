@@ -33,7 +33,6 @@ jobs:
   # Test the WordPress installation process through WP-CLI.
   #
   # Performs the following steps:
-  # - Checks out the repository.
   # - Sets up PHP.
   # - Starts the database server.
   # - Downloads the specified version of WordPress.
@@ -62,9 +61,6 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=30s --health-timeout=10s --health-retries=5 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test_db --entrypoint sh ${{ matrix.db-type }}:${{ matrix.db-version }} -c "exec docker-entrypoint.sh mysqld --default-authentication-plugin=mysql_native_password"
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
-
       - name: Set up PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@d30ad8b1843ace22e6698ab99bbafaa747b6bd0d # v2.24.0
         with:

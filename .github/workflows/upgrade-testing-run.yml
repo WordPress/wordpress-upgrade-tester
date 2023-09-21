@@ -1,13 +1,11 @@
-##
 # A callable workflow that runs WordPress upgrade testing under the conditions provided.
-##
 name: Upgrade Tests
 
 on:
   workflow_call:
     inputs:
       os:
-        description: 'Operating system to run tests on'
+        description: 'Operating system to run tests on.'
         required: false
         type: 'string'
         default: 'ubuntu-latest'
@@ -20,21 +18,21 @@ on:
         type: 'string'
         default: 'latest'
       php:
-        description: 'The version of PHP to use, in the format of X.Y'
+        description: 'The version of PHP to use. Expected format: X.Y.'
         required: true
         type: 'string'
       multisite:
-        description: 'Whether to run tests as multisite'
+        description: 'Whether to run tests as multisite.'
         required: false
         type: 'boolean'
         default: false
       db-type:
-        description: 'Database type. Valid types are mysql and mariadb'
+        description: 'Database type. Valid types are mysql and mariadb.'
         required: false
         type: 'string'
         default: 'mysql'
       db-version:
-        description: 'Database version'
+        description: 'Database version.'
         required: false
         type: 'string'
         default: '5.7'

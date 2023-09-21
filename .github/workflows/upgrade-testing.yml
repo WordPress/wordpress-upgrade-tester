@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       new-version:
-        description: 'The version to test updating to.'
+        description: 'The version to test updating to. Major releases must not end with ".0".'
         type: string
         default: 'latest'
 
@@ -32,9 +32,7 @@ concurrency:
 permissions: {}
 
 jobs:
-  #
-  # Spawns upgrade testing for WordPress 6.x versions with MySQL.
-  #
+  # Spawns upgrade testing from WordPress 6.x versions with MySQL.
   upgrade-tests-wp-6x-mysql:
     name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: WordPress/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@combine-upgrade-test-workflows
@@ -59,9 +57,7 @@ jobs:
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
       multisite: ${{ matrix.multisite }}
 
-  #
-  # Spawns upgrade testing for WordPress 5.x versions on PHP 7.x with MySQL.
-  #
+  # Spawns upgrade testing from WordPress 5.x versions on PHP 7.x with MySQL.
   upgrade-tests-wp-5x-php-7x-mysql:
     name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: WordPress/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@combine-upgrade-test-workflows
@@ -84,13 +80,11 @@ jobs:
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
       multisite: ${{ matrix.multisite }}
 
-  #
-  # Spawns upgrade testing for WordPress 5.x versions on PHP 8.x with MySQL.
+  # Spawns upgrade testing from WordPress 5.x versions on PHP 8.x with MySQL.
   #
   # WordPress 5.0-5.2 are excluded from PHP 8+ testing because of the following fatal errors:
   # - Use of __autoload().
   # - array/string offset with curly braces.
-  #
   upgrade-tests-wp-5x-php-8x-mysql:
     name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: WordPress/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@combine-upgrade-test-workflows
@@ -113,9 +107,7 @@ jobs:
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
       multisite: ${{ matrix.multisite }}
 
-  #
-  # Spawns upgrade testing for WordPress 4.x versions on PHP 7.x with MySQL.
-  #
+  # Spawns upgrade testing from WordPress 4.x versions on PHP 7.x with MySQL.
   upgrade-tests-wp-4x-php-7x-mysql:
     name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: WordPress/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@combine-upgrade-test-workflows
@@ -138,13 +130,11 @@ jobs:
       new-version: ${{ inputs.new-version && inputs.new-version || 'latest' }}
       multisite: ${{ matrix.multisite }}
 
-  #
-  # Spawns upgrade testing for WordPress 4.x versions on PHP 8.x with MySQL.
+  # Spawns upgrade testing from WordPress 4.x versions on PHP 8.x with MySQL.
   #
   # WordPress 4.6-4.9 are excluded from PHP 8+ testing because of the following fatal errors:
   # - Use of __autoload().
   # - array/string offset with curly braces.
-  #
   upgrade-tests-wp-4x-php-8x-mysql:
     name: ${{ matrix.wp }} to ${{ inputs.new-version && inputs.new-version || 'latest' }}
     uses: WordPress/wordpress-upgrade-tester/.github/workflows/upgrade-testing-run.yml@combine-upgrade-test-workflows

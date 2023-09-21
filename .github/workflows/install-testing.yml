@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       wp-version:
-        description: 'The version to test installing.'
+        description: 'The version to test installing. Major releases must not end with ".0".'
         type: string
         default: 'latest'
 
@@ -30,7 +30,7 @@ concurrency:
 permissions: {}
 
 jobs:
-  # Runs tests installing WordPress.
+  # Test the WordPress installation process through WP-CLI.
   #
   # Performs the following steps:
   # - Checks out the repository.
